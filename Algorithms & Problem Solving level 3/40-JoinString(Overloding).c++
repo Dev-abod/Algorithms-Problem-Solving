@@ -15,7 +15,7 @@ string ReadString()
 string JoinString(vector<string> vString, string delim)
 {
     string S1 = " ";
-
+    
     for (string &s : vString)
     {
         S1 = S1 + s + delim;
