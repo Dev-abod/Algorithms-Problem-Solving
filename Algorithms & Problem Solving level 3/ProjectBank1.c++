@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include "ProjectBank1.h"
 
 using namespace std;
 const string ClientsFileName = "Clients.txt";
@@ -19,6 +20,7 @@ struct sClient
     double AccountBalance;
     bool MarkForDelete = false;
 };
+
 
 vector<string> SplitString(string S1, string Delim)
 {
@@ -324,7 +326,6 @@ bool DeleteClientByAccountNumber(string AccountNumber, vector<sClient> &vClients
 
     if (FindClientByAccountNumber(AccountNumber, vClients, Client))
     {
-
         PrintClientCard(Client);
 
         cout << "\n\nAre you sure you want delete this client? y/n ? ";

@@ -141,6 +141,7 @@ vector<sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients)
     }
     return vClients;
 }
+
 bool DeleteClientByAccountNumber(string AccountNumber, vector<sClient> &vClients)
 {
     sClient Client;
@@ -152,8 +153,7 @@ bool DeleteClientByAccountNumber(string AccountNumber, vector<sClient> &vClients
         cin >> Answer;
         if (Answer == 'y' || Answer == 'Y')
         {
-            MarkClientForDeleteByAccountNumber(AccountNumber,
-                                               vClients);
+            MarkClientForDeleteByAccountNumber(AccountNumber, vClients);
             SaveCleintsDataToFile(ClientsFileName, vClients);
             // Refresh Clients
             vClients = LoadCleintsDataFromFile(ClientsFileName);
