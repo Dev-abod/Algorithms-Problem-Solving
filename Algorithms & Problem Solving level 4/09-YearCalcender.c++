@@ -73,14 +73,18 @@ void PrintMonthCalendar(short Month, short Year)
     printf("\n _________________________________\n");
 }
 
-
-short ReadMonth()
+void PrintYearCalendar(short Year)
 {
-    short Month;
-    cout << "\nPlease enter a Month? ";
-    cin >> Month;
-    return Month;
+    printf("\n ----------------------------------\n\n");
+    printf("           Calender  -  %d\n", Year);
+    printf("\n ----------------------------------\n\n");
+
+    for (int i = 1; i <= 12; i++)
+    {
+        PrintMonthCalendar(i, Year);
+    }
 }
+
 short ReadYear()
 {
     short Year;
@@ -90,8 +94,7 @@ short ReadYear()
 }
 int main()
 {
-    short Year = ReadYear();
-    short Month = ReadMonth();
-    PrintMonthCalendar(Month, Year);
+
+    PrintYearCalendar(ReadYear());
     return 0;
 }
