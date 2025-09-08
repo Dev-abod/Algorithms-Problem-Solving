@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include "ProjectBank1.h"
 
 using namespace std;
 const string ClientsFileName = "Clients.txt";
