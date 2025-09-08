@@ -2,6 +2,13 @@
 #include <string>
 using namespace std;
 
+struct stDate
+{
+    short Year = 0;
+    short Month = 0;
+    short Day = 0;
+};
+
 bool isLeapYear(short Year)
 {
     // if year is divisible by 4 AND not divisible by 100
@@ -20,11 +27,11 @@ short NumberOfDaysInAMonth(short Month, short Year)
 
 short NumberOfDayFromTheBeginingOfTheYear(int Day, int Month, int Year)
 {
-    short TotalDays =0;
+    short TotalDays = 0;
 
-    for(int i=1 ; i<=Month -1 ; i++)
+    for (int i = 1; i <= Month - 1; i++)
     {
-        TotalDays += NumberOfDaysInAMonth(i,Year);
+        TotalDays += NumberOfDaysInAMonth(i, Year);
     }
 
     TotalDays += Day;
@@ -32,6 +39,33 @@ short NumberOfDayFromTheBeginingOfTheYear(int Day, int Month, int Year)
     return TotalDays;
 }
 
+stDate GetDateFromDaysOrderInYear(short DaysOrderInYear, short Year)
+{
+    stDate Date;
+
+    short Remainder = DaysOrderInYear;
+    short MonthDay = 0;
+
+    Date.Year = Year;
+    Date.Month = 1;
+
+    while (true)
+    {
+        MonthDay = NumberOfDaysInAMonth(Date.Month, Year);
+        if (Remainder > MonthDay)
+        {
+            Remainder -= MonthDay;
+            Date.Month++;
+        }
+        else
+        {
+            Date.Day = Remainder;
+            break;
+        }
+    }
+
+    return Date;
+}
 
 short ReadYear()
 {
@@ -63,9 +97,15 @@ int main()
     short Year = ReadYear();
     short Month = ReadMonth();
     short Day = ReadDay();
+    short DaysOrderInYear = NumberOfDayFromTheBeginingOfTheYear(Day, Month, Year);
 
     cout << "\nNumber Of Day From The Begining Of The Year is : "
-         << NumberOfDayFromTheBeginingOfTheYear(Day, Month, Year);
+         << DaysOrderInYear;
+
+    stDate Date;
+    Date = GetDateFromDaysOrderInYear(DaysOrderInYear, Year);
+    cout << "\n\nDate for [" << DaysOrderInYear << "] is: ";
+    cout << Date.Day << "/" << Date.Month << "/" << Date.Year;
 
     return 0;
 }

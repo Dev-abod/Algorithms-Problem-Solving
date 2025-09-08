@@ -1,30 +1,23 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-bool IsLeapYear(int Year)
+bool IsLeapYear(short Year)
 {
-    return (Year % 4 == 0 && Year % 100 != 0) || Year % 400 == 0;
+    return (Year % 4 == 0 && Year % 100 !=0) || (Year % 400 == 0);
 }
-
-int ReadYear()
+short ReadYear()
 {
     short Year;
-    cout << "\nEnter a Year to check? ";
+    cout << "\nPlease enter a year to check? ";
     cin >> Year;
     return Year;
 }
-
 int main()
 {
     short Year = ReadYear();
-
     if (IsLeapYear(Year))
-    {
-        cout << Year << " is Leap Year\n";
-    }
+        cout << "\nYes, Year [" << Year << "] is a leap year.\n";
     else
-        cout << Year << " is NOT Leap Year\n";
-
+        cout << "\nNo, Year [" << Year << "] is NOT a leap year.\n";
     return 0;
 }

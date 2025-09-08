@@ -2,11 +2,6 @@
 #include <string>
 using namespace std;
 
-bool IsLeapYear(int Year)
-{
-    return (Year % 4 == 0 && Year % 100 != 0) || Year % 400 == 0;
-}
-
 short DayOfWeekOrder(short Day, short Month, short Year)
 {
     short a, y, m;

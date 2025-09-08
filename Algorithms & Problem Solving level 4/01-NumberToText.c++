@@ -1,85 +1,77 @@
 #include <iostream>
-#include <string>
+
 using namespace std;
-string NumberToText(int Number)
+
+// long long int ReadNumber()
+int ReadNumber()
 {
-    if (Number == 0)
+    // long long int Num;
+    int Num;
+    cout << "\n\tEnter a Number : ";
+    cin >> Num;
+    return Num;
+}
+
+// string NumberToText(long long int Num)
+string NumberToText(int Num)
+{
+    string Arr1To19[] = {"", "One", "Two", "Three", "Four", "Five", "Six",
+                         "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
+                         "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen",
+                         "Nineteen"};
+
+    string Arr20To99[] = {"", "", "Twenty", "Thirty", "Forty", "Fifty",
+                          "Sixty", "Seventy", "Eighty", "Ninety"};
+
+    if (Num == 0)
     {
         return "";
     }
 
-    if (Number >= 1 && Number <= 19)
+    if (Num >= 1 && Num <= 19)
     {
-        string arr[] = {"",
-                        "One", "Two", "Three", "Four", "Five", "Six", "Seven",
-                        "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
-                        "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-        return arr[Number] + " ";
-    }
-    
-
-    if (Number >= 20 && Number <= 99)
-    {
-        string arr[] = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
-        return arr[Number / 10] + " " + NumberToText(Number % 10);
+        return Arr1To19[Num];
     }
 
-    if (Number >= 100 && Number <= 199)
+    if (Num >= 20 && Num <= 99)
     {
-        return "One Hundred " + NumberToText(Number % 100);
+        return Arr20To99[Num / 10] + "-" + NumberToText(Num % 10);
     }
 
-    if (Number >= 200 && Number <= 999)
+    if (Num >= 100 && Num <= 999)
     {
-        return NumberToText(Number / 100) + "Hundreds " +
-               NumberToText(Number % 100);
+        return NumberToText(Num / 100) + " Hundred " + NumberToText(Num % 100);
     }
 
-    if (Number >= 1000 && Number <= 1999)
+    if (Num >= 1000 && Num <= 999999)
     {
-        return "One Thousand " + NumberToText(Number % 1000);
+        return NumberToText(Num / 1000) + " Thousand, " + NumberToText(Num % 1000);
     }
 
-    if (Number >= 2000 && Number <= 999999)
+    if (Num >= 1000000 && Num <= 999999999)
     {
-        return NumberToText(Number / 1000) + "Thousands " +
-               NumberToText(Number % 1000);
+        return NumberToText(Num / 1000000) + " Million, " + NumberToText(Num % 1000000);
     }
 
-    if (Number >= 1000000 && Number <= 1999999)
+    /*if (Num >= 1000000000 && Num <= 999999999999)
     {
-        return "One Million " + NumberToText(Number % 1000000);
-    }
-
-    if (Number >= 2000000 && Number <= 999999999)
-    {
-        return NumberToText(Number / 1000000) + "Millions " +
-               NumberToText(Number % 1000000);
-    }
-
-    if (Number >= 1000000000 && Number <= 1999999999)
-    {
-        return "One Billion " + NumberToText(Number % 1000000000);
+     return NumberToText(Num / 1000000000) + " Billion, " + NumberToText(Num % 1000000000);
     }
 
     else
     {
-        return NumberToText(Number / 1000000000) + "Billions " +
-               NumberToText(Number % 1000000000);
-    }
-}
-
-int ReadNumber()
-{
-    int Number;
-    cout << "\nEnter a Number? ";
-    cin >> Number;
-    return Number;
+     return NumberToText(Num / 1000000000000) + " Trillion, " + NumberToText(Num % 1000000000000);
+    }*/
 }
 
 int main()
 {
-    int Number = ReadNumber();
-    cout << NumberToText(Number);
-    return 0;
+    system("color f0");
+
+    // long long int Num = ReadNumber();
+
+    int Num = ReadNumber();
+    cout << "\n\t" << NumberToText(Num) << endl;
+
+    system("pause>0");
 }
