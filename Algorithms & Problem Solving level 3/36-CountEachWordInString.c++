@@ -12,7 +12,7 @@ string ReadString()
     return S1;
 }
 
-int CountWord(string S1)
+short CountWord(string S1)
 {
     string delim = " "; // delimiter
     int counter = 0;
