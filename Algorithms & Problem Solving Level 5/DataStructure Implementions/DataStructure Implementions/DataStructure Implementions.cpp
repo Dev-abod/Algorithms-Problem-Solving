@@ -16,21 +16,17 @@ int main()
     MyDynamicArray.SetItem(2, 30);
     MyDynamicArray.SetItem(3, 40);
     MyDynamicArray.SetItem(4, 50);
-    
+
     cout << "\nIs Empty?  " << MyDynamicArray.IsEmpty();
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     cout << "\nArray Items: \n";
 
     MyDynamicArray.PrintList();
 
-
-    cout << "\nReverse :";
-    MyDynamicArray.Reverse();
+    MyDynamicArray.InsertAt(2, 500);
+    cout << "\n\nArray after insert 500 at index 2:";
+    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
-
-    MyDynamicArray.Clear();
-    MyDynamicArray.PrintList();
-
 
 
     system("pause>0");

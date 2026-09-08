@@ -28,7 +28,7 @@ public:
 	~clsDynamicArray()
 	{
 		delete[] OriginalArrary;
-		
+
 	}
 
 	bool SetItem(int index, T Value)
@@ -78,7 +78,7 @@ public:
 
 		delete[] OriginalArrary;
 		OriginalArrary = _TempArray;
-		
+
 	}
 
 	T GetItem(int index)
@@ -90,12 +90,12 @@ public:
 	{
 		_TempArray = new T[_Size];
 		int Counter = 0;
-		for (int i = _Size-1; i >= 0; i--)
+		for (int i = _Size - 1; i >= 0; i--)
 		{
 			_TempArray[Counter] = OriginalArrary[i];
 			Counter++;
-		} 
-		
+		}
+
 		delete[] OriginalArrary;
 		OriginalArrary = _TempArray;
 	}
@@ -108,4 +108,86 @@ public:
 		OriginalArrary = _TempArray;
 	}
 
+	bool DeleteItemAt(int Index)
+	{
+
+		if (Index >= _Size || Index < 0)
+		{
+			return false;
+		}
+
+
+		--_Size;
+		_TempArray = new T[_Size];
+
+		for (int i = 0; i < Index; i++)
+		{
+			_TempArray[i] = OriginalArrary[i];
+		}
+
+		for (int i = Index + 1; i < _Size + 1; i++)
+		{
+			_TempArray[i-1] = OriginalArrary[i];
+		}
+
+		delete[] OriginalArrary;
+		OriginalArrary = _TempArray;
+
+		return true;
+	}
+
+	void DeleteFirstItem()
+	{
+		DeleteItemAt(0);
+	}
+
+	void DeleteLastItem()
+	{
+		DeleteItemAt(_Size-1);
+	}
+
+	int Find(T value)
+	{
+		for (int i = 0; i < _Size; i++)
+		{
+			if (value == OriginalArrary[i])
+				return i;
+		}
+		return -1;
+	}
+
+	bool DeleteItem(int  value)
+	{
+		int index = Find(value);
+		if (index == -1)
+		{
+			return false;
+		}
+
+		DeleteItemAt(index);
+		return true;
+	
+	}
+
+	void InsertAt(int Index, T NewValue)
+	{
+		_Size++;
+
+		_TempArray = new T[_Size];
+
+		for (int i = 0; i < Index; i++)
+		{
+			_TempArray[i] = OriginalArrary[i];
+		}
+
+
+		for (int i = Index ; i < _Size ; i++)
+		{
+			if(Index == Index)
+				_TempArray[i] = NewValue;
+
+			_TempArray[i] = OriginalArrary[i];
+
+		}
+	}
 };
